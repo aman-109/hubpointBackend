@@ -115,8 +115,8 @@ const loginUser = async (req, res) => {
       refreshToken_secret,
       { expiresIn: "28 days" }
     );
-     res.status(200).cookie("token", token,{httpOnly:false})
-     .cookie("refreshToken",refreshToken,{httpOnly:false})
+     res.status(200).cookie("token", token,{httpOnly:false,sameSite:"None"})
+     .cookie("refreshToken",refreshToken,{httpOnly:false,sameSite:"None"})
      .send({ status: true, token, refreshToken });
   } else {
     return res.send({ status: false, messege: "something went wrong" });
@@ -156,7 +156,7 @@ const getRefreshToken = async (req, res) => {
           }
         );
         
-        return res.status(200).cookie("token",new_token,{httpOnly:false}).cookie("refreshToken",token,{httpOnly:false}).send({
+        return res.status(200).cookie("token",new_token,{httpOnly:false,sameSite:"None"}).cookie("refreshToken",token,{httpOnly:false,sameSite:"None"}).send({
           status: true,
           token: new_token,
           refreshToken: token,
