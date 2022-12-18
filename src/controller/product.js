@@ -67,7 +67,7 @@ const getSingleProduct = async (req, res) => {
 };
 const addProd = async (req, res) => {
   let { id } = req.params;
-  const token = req.cookies.token;  
+  const token = req.cookies.token;
   let verification = jwt.verify(token, token_secret);
   try {
     let user = await User.findOneAndUpdate(
@@ -76,10 +76,12 @@ const addProd = async (req, res) => {
     );
     return res
       .status(200)
-      .send({ status: true, message: "prodeuct added successfully" });
+      .send({ status: true, message: "Product added successfully" });
   } catch (e) {
     return res.status(401).send({ message: e.message });
   }
 };
 
-module.exports = { getAllProduct, getSingleProduct,addProd };
+const deleteService = async (req, res) => {};
+
+module.exports = { getAllProduct, getSingleProduct, addProd, deleteService };

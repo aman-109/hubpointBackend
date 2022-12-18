@@ -44,7 +44,7 @@ router
   .get("/products/:id", verifyToken, productRoute.getSingleProduct)
   .get("/products/add-product/:id", verifyToken, productRoute.addProd)
   .get("/admin/dashboard", adminVerification, adminRoute)
-  .post("/admin/create-service", adminVerification, productRoute.addService)
+  .post("/admin/create-service", adminVerification, productRoute.addProd)
   .delete(
     "/admin/delete-service/:id",
     adminVerification,
