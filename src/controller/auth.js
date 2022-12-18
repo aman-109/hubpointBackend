@@ -90,7 +90,7 @@ const signupUser = async (req, res) => {
 
   let user = await createUser({ ...data });
   if (user) {
-    return res.send({ status: true, messege: "user created successfully" });
+    return res.send({ status: true,user:data.email, messege: "user created successfully" });
   } else {
     return res.send({ status: false, messege: "wrong details" });
   }
@@ -203,11 +203,11 @@ if(user && !password ){
 
  }
  let hash = await argon2.hash(password);
- const updatedUser = await User.findByIdAndUpdate(user._id, {
+  await User.findByIdAndUpdate(user._id, {
   $set: { password: hash },
 },{new:true});
 
-return res.send({message:"password updated successfully",updatedUser})
+return res.send({message:"password updated successfully"})
 }
 
 module.exports = {
