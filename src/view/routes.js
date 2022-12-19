@@ -7,9 +7,10 @@ const googleRoute = require("../controller/gAuth");
 const facebookRoute = require("../controller/fAuth");
 const productRoute = require("../controller/product");
 const adminRoute = require("../controller/admin");
-
+const passport1=require("../utils/facebookOauth")
 //middleware
 const { verifyToken, adminVerification } = require("../middlewares/middleware");
+
 
 router
   .get("/user", userRoute.getUser)
@@ -31,10 +32,10 @@ router
     }),
     googleRoute.google
   )
-  .get("/user/auth/facebook", passport.authenticate("facebook"))
+  .get("/user/auth/facebook", passport1.authenticate("facebook"))
   .get(
     "/user/auth/facebook/callback",
-    passport.authenticate("facebook", {
+    passport1.authenticate("facebook", {
       failureRedirect: "/user/login",
       session: false,
     }),

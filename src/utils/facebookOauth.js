@@ -5,7 +5,7 @@ const FacebookStrategy=require("passport-facebook")
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:8080/auth/facebook/callback",
+    callbackURL: "https://hubpointserver.onrender.com/user/auth/facebook/callback",
     profileFields: ['id', 'displayName', 'email','picture']
   },
   function(accessToken, refreshToken, profile, cb) {
