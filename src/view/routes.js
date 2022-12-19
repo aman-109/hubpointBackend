@@ -32,7 +32,7 @@ router
     }),
     googleRoute.google
   )
-  .get("/user/auth/facebook", passport1.authenticate("facebook"))
+  .get("/user/auth/facebook", passport1.authenticate("facebook",{ scope: ["email"] }))
   .get(
     "/user/auth/facebook/callback",
     passport1.authenticate("facebook", {
